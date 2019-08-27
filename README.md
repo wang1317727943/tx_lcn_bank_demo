@@ -6,29 +6,16 @@ tx-lcn 演示项目. 银行扣款  A,B 应用同时扣款, 模拟B应用出异�
   3. 创建TC工程需要的数据库,启动TX-Manager 工程
   4. 创建bank_demo工程所需数据库, 并启动 BANK-A,BANK-B工程
   
- Eureka 启动后查看地址: http://localhost:8761/
- TxManager系统后台地址: http://127.0.0.1:7970/admin/index.html    登录密码: codingapi
- bank_demo 测试get请求地址url: http://127.0.0.1:7071/start?money=150 
- 1) 调用成功返回 success,查看A,B数据库都修改成功
+ Eureka 启动后查看地址: http://localhost:8761/ <br/>
+ TxManager系统后台地址: http://127.0.0.1:7970/admin/index.html    登录密码: codingapi <br/>
+ bank_demo 测试get请求地址url: http://127.0.0.1:7071/start?money=150  <br/>
+ 1) 调用成功返回 success,查看A,B数据库都修改成功 
  2) 在service里制造异常 (注释掉了)
  3) 调用失败返回 error 500到页面,查看A,B数据库均未被修改
  
-1.  bank-a sql 
-  /*
-Navicat MySQL Data Transfer
+1.  bank-a sql
 
-Source Server         : ThisMe
-Source Server Version : 50724
-Source Host           : localhost:3306
-Source Database       : tx_back_a
-
-Target Server Type    : MYSQL
-Target Server Version : 50724
-File Encoding         : 65001
-
-Date: 2019-08-26 17:27:48
-*/
-
+------------------------------------------------
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
@@ -48,21 +35,7 @@ CREATE TABLE `bank_a` (
 INSERT INTO `bank_a` VALUES ('1', '550', 'shen');
 
 2.bank_b sql
-
-/*
-Navicat MySQL Data Transfer
-
-Source Server         : ThisMe
-Source Server Version : 50724
-Source Host           : localhost:3306
-Source Database       : tx_back_b
-
-Target Server Type    : MYSQL
-Target Server Version : 50724
-File Encoding         : 65001
-
-Date: 2019-08-26 17:27:59
-*/
+------------------------------------------------
 
 SET FOREIGN_KEY_CHECKS=0;
 
@@ -81,28 +54,15 @@ CREATE TABLE `bank_b` (
 -- Records of bank_b
 -- ----------------------------
 INSERT INTO `bank_b` VALUES ('1', '1450', 'shen');
+
+
 3. tx-manager sql 
- /*
-Navicat MySQL Data Transfer
 
-Source Server         : ThisMe
-Source Server Version : 50724
-Source Host           : localhost:3306
-Source Database       : tx-manager
-
-Target Server Type    : MYSQL
-Target Server Version : 50724
-File Encoding         : 65001
-
-Date: 2019-08-27 10:10:43
-*/
-
+------------------------------------------------
 SET FOREIGN_KEY_CHECKS=0;
 
--- ----------------------------
--- Table structure for hibernate_sequence
--- ----------------------------
 DROP TABLE IF EXISTS `hibernate_sequence`;
+
 CREATE TABLE `hibernate_sequence` (
   `next_val` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -116,6 +76,7 @@ INSERT INTO `hibernate_sequence` VALUES ('1');
 -- Table structure for t_logger
 -- ----------------------------
 DROP TABLE IF EXISTS `t_logger`;
+
 CREATE TABLE `t_logger` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `group_id` varchar(64) NOT NULL,
@@ -135,6 +96,7 @@ CREATE TABLE `t_logger` (
 -- Table structure for t_tx_exception
 -- ----------------------------
 DROP TABLE IF EXISTS `t_tx_exception`;
+
 CREATE TABLE `t_tx_exception` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `group_id` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
